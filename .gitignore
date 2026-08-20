@@ -5,6 +5,6 @@ result
 .envrc
 .build
 target
-.zip
+*.zip
 
 firmware
