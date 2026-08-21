@@ -84,8 +84,8 @@
             bindings = <&tog NUM>, <&mo NUM>;
         };
 
-        /* M0: mmac314718 + Enter. */
-        macro_m0: macro_m0 {
+        /* M1: mmac314718 + Enter. */
+        macro_m1: macro_m1 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <20>;
@@ -105,8 +105,8 @@
                 ;
         };
 
-        /* M1: %<md> Enter Enter %</md> Up. */
-        macro_m1: macro_m1 {
+        /* M0: %<md> Enter Enter %</md> Up. */
+        macro_m0: macro_m0 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <20>;
