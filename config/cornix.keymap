@@ -21,6 +21,7 @@
 /* These are the physical positions of the opposite hand and the four home
  * thumb keys. They are the same positional scheme used by the mature
  * "timeless homerow mods" pattern in zmk-config repositories. */
+
 #define KEYS_L LT0 LT1 LT2 LT3 LT4 LT5 LM0 LM1 LM2 LM3 LM4 LM5 LB0 LB1 LB2 LB3 LB4 LB5
 #define KEYS_R RT0 RT1 RT2 RT3 RT4 RT5 RM0 RM1 RM2 RM3 RM4 RM5 RB0 RB1 RB2 RB3 RB4 RB5
 #define KEYS_T LH1 LH0 RH0 RH1
@@ -30,6 +31,7 @@
  * unilateral-tap switch, so the positional trigger lists below are the
  * practical equivalent: opposite-hand chords become holds, while ordinary
  * same-hand rolls remain taps. */
+
 #define HM_TERM 220
 #define HM_QUICK 175
 #define HM_IDLE 150
@@ -46,6 +48,7 @@
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             bindings = <&kp>, <&kp>;
+
             flavor = "balanced";
             tapping-term-ms = <HM_TERM>;
             quick-tap-ms = <HM_QUICK>;
@@ -58,6 +61,7 @@
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             bindings = <&kp>, <&kp>;
+
             flavor = "balanced";
             tapping-term-ms = <HM_TERM>;
             quick-tap-ms = <HM_QUICK>;
@@ -67,16 +71,19 @@
         };
 
         /* Layer-tap behavior: hold activates a layer, tap sends a key. */
+
         lt_key: lt_key {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             bindings = <&mo>, <&kp>;
+
             flavor = "hold-preferred";
             tapping-term-ms = <HM_TERM>;
             quick-tap-ms = <HM_QUICK>;
         };
 
         /* RMK TD(0): single tap toggles layer 4, hold momentarily activates it. */
+
         td_num: td_num {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
@@ -85,48 +92,73 @@
         };
 
         /* M1: mmac314718 + Enter. */
+
         macro_m1: macro_m1 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <20>;
             tap-ms = <20>;
-            bindings
-                = <&macro_tap &kp M>
-                , <&macro_tap &kp M>
-                , <&macro_tap &kp A>
-                , <&macro_tap &kp C>
-                , <&macro_tap &kp N3>
-                , <&macro_tap &kp N1>
-                , <&macro_tap &kp N4>
-                , <&macro_tap &kp N7>
-                , <&macro_tap &kp N1>
-                , <&macro_tap &kp N8>
-                , <&macro_tap &kp RET>
-                ;
+            bindings =
+                <&macro_tap>,
+                <&kp M>,
+                <&macro_tap>,
+                <&kp M>,
+                <&macro_tap>,
+                <&kp A>,
+                <&macro_tap>,
+                <&kp C>,
+                <&macro_tap>,
+                <&kp N3>,
+                <&macro_tap>,
+                <&kp N1>,
+                <&macro_tap>,
+                <&kp N4>,
+                <&macro_tap>,
+                <&kp N7>,
+                <&macro_tap>,
+                <&kp N1>,
+                <&macro_tap>,
+                <&kp N8>,
+                <&macro_tap>,
+                <&kp RET>;
         };
 
         /* M0: %<md> Enter Enter %</md> Up. */
+
         macro_m0: macro_m0 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <20>;
             tap-ms = <20>;
-            bindings
-                = <&macro_tap &kp LS(N5)>
-                , <&macro_tap &kp LS(COMMA)>
-                , <&macro_tap &kp M>
-                , <&macro_tap &kp D>
-                , <&macro_tap &kp LS(DOT)>
-                , <&macro_tap &kp RET>
-                , <&macro_tap &kp RET>
-                , <&macro_tap &kp LS(N5)>
-                , <&macro_tap &kp LS(COMMA)>
-                , <&macro_tap &kp FSLH>
-                , <&macro_tap &kp M>
-                , <&macro_tap &kp D>
-                , <&macro_tap &kp LS(DOT)>
-                , <&macro_tap &kp UP>
-                ;
+            bindings =
+                <&macro_tap>,
+                <&kp LS(N5)>,
+                <&macro_tap>,
+                <&kp LS(COMMA)>,
+                <&macro_tap>,
+                <&kp M>,
+                <&macro_tap>,
+                <&kp D>,
+                <&macro_tap>,
+                <&kp LS(DOT)>,
+                <&macro_tap>,
+                <&kp RET>,
+                <&macro_tap>,
+                <&kp RET>,
+                <&macro_tap>,
+                <&kp LS(N5)>,
+                <&macro_tap>,
+                <&kp LS(COMMA)>,
+                <&macro_tap>,
+                <&kp FSLH>,
+                <&macro_tap>,
+                <&kp M>,
+                <&macro_tap>,
+                <&kp D>,
+                <&macro_tap>,
+                <&kp LS(DOT)>,
+                <&macro_tap>,
+                <&kp UP>;
         };
     };
 
@@ -134,6 +166,7 @@
         compatible = "zmk,combos";
 
         /* Vial combo 0: U + I -> [. */
+
         combo_lbracket {
             bindings = <&kp LBKT>;
             key-positions = <7 8>;
@@ -141,6 +174,7 @@
         };
 
         /* Vial combo 1: I + O -> ]. */
+
         combo_rbracket {
             bindings = <&kp RBKT>;
             key-positions = <8 9>;
@@ -148,6 +182,7 @@
         };
 
         /* Vial combo 2: shifted 8 + shifted 9 -> shifted ]. */
+
         combo_shift_rbracket {
             bindings = <&kp LS(RBKT)>;
             key-positions = <8 9>;
@@ -155,6 +190,7 @@
         };
 
         /* Vial combo 3: shifted 7 + shifted 8 -> shifted [. */
+
         combo_shift_lbracket {
             bindings = <&kp LS(LBKT)>;
             key-positions = <7 8>;
@@ -162,6 +198,7 @@
         };
 
         /* Vial combo 4: , + .  -> \. */
+
         combo_backslash {
             bindings = <&kp BSLH>;
             key-positions = <34 35>;
@@ -169,11 +206,15 @@
         };
 
         /* Vial combo 5: shifted , + shifted .  -> |. */
+
         combo_shifted_backslash {
             bindings = <&kp LS(BSLH)>;
             key-positions = <34 35>;
             layers = <SYM>;
         };
+    };
+
+    macros {
     };
 
     keymap {
@@ -182,110 +223,120 @@
         layer0 {
             display-name = "Base";
             bindings = <
-                &kp TAB        &kp Q          &kp W           &kp E                 &kp R             &kp T                                        &kp Y          &kp U             &kp I          &kp O           &kp P           &kp BSLH
-                &hm_l LGUI ESC &hm_l LALT A   &hm_l LCTRL S   &hm_l LSHFT D         &hm_l LGUI F      &kp G                                        &kp H          &hm_r RGUI J      &hm_r RSHFT K  &hm_r RCTRL L   &hm_r LALT SEMI &kp RET
-                &kp LSHFT      &kp Z          &kp X           &kp C                 &kp V             &kp B          &kp K_MUTE      &kp KP_N0     &kp N          &kp M             &kp COMMA      &kp DOT         &kp FSLH        &kp RSHFT
-                &kp LCTRL      &td_num        &mo BT          &hm_l LSHFT CAPSLOCK  &lt_key SYM ESC   &lt_key FN TAB                               &kp BSPC       &lt_key SYM SPACE &kp RET        &kp LEFT        &kp DOWN        &kp RIGHT
+&kp TAB         &kp Q         &kp W          &kp E          &kp R            &kp T                                  &kp Y     &kp U              &kp I          &kp O          &kp P            &kp BSLH
+&hm_l LGUI ESC  &hm_l LALT A  &hm_l LCTRL S  &hm_l LSHFT D  &hm_l LGUI F     &kp G                                  &kp H     &hm_r RGUI J       &hm_r RSHFT K  &hm_r RCTRL L  &hm_r LALT SEMI  &kp RET
+&kp LSHFT       &kp Z         &kp X          &kp C          &kp V            &kp B           &kp K_MUTE  &kp KP_N0  &kp N     &kp M              &kp COMMA      &kp DOT        &kp FSLH         &kp RSHFT
+&kp LCTRL       &td_num       &mo BT         &kp LSHFT      &lt_key SYM ESC  &lt_key FN TAB                         &kp BSPC  &lt_key SYM SPACE  &kp RET        &kp LEFT       &kp DOWN         &kp RIGHT
             >;
+
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &scroll_y>;
         };
 
         layer1 {
             display-name = "Windows";
             bindings = <
-                &trans          &trans        &trans          &trans                &trans            &trans                                       &trans        &trans             &trans         &trans          &trans          &trans
-                &hm_l LCTRL ESC &hm_l LALT A  &hm_l LGUI S    &hm_l LSHFT D         &hm_l LCTRL F     &kp G                                        &kp H         &hm_r RCTRL J      &hm_r RSHFT K  &hm_r RGUI L    &hm_r LALT SEMI &kp RET 
-                &kp LSHFT       &trans        &trans          &trans                &trans            &trans        &kp K_MUTE       &kp KP_N1     &trans        &trans             &trans         &trans          &trans          &trans
-                &kp LCTRL       &td_num       &mo BT          &hm_l LSHFT CAPSLOCK  &lt_key SYM ESC   &lt_key FN TAB                               &kp BSPC      &lt_key SYM SPACE  &kp RET        &kp LEFT        &kp DOWN        &kp RIGHT
+&trans           &trans        &trans        &trans                &trans           &trans                                 &trans    &trans             &trans         &trans        &trans           &trans
+&hm_l LCTRL ESC  &hm_l LALT A  &hm_l LGUI S  &hm_l LSHFT D         &hm_l LCTRL F    &kp G                                  &kp H     &hm_r RCTRL J      &hm_r RSHFT K  &hm_r RGUI L  &hm_r LALT SEMI  &kp RET
+&kp LSHFT        &trans        &trans        &trans                &trans           &trans          &kp K_MUTE  &kp KP_N1  &trans    &trans             &trans         &trans        &trans           &trans
+&kp LCTRL        &td_num       &mo BT        &hm_l LSHFT CAPSLOCK  &lt_key SYM ESC  &lt_key FN TAB                         &kp BSPC  &lt_key SYM SPACE  &kp RET        &kp LEFT      &kp DOWN         &kp RIGHT
             >;
+
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_BRI_UP C_BRI_DN>;
         };
 
         layer2 {
             display-name = "Symbols";
             bindings = <
-                &kp LS(GRAVE) &kp LS(N1)    &kp LS(N2) &kp LS(N3)    &kp LS(N4)   &kp LS(N5)                                    &kp LS(N6) &kp LS(N7) &kp LS(N8) &kp LS(N9) &kp LS(N0) &kp LS(BSLH)
-                &kp LS(SQT)   &kp LS(MINUS) &kp MINUS  &kp LS(EQUAL) &kp EQUAL    &kp LS(SQT)                                   &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT  &kp SQT    &kp BSLH
-                &kp GRAVE     &kp N1        &kp N2     &kp N3        &kp N4       &kp N5         &kp K_MUTE     &kp KP_N2       &kp N6     &kp N7     &kp N8     &kp N9     &kp N0     &kp KP_N0
-                &trans        &trans        &mo BT     &none         &none        &none                                         &kp BSPC   &kp SPACE  &none      &macro_m1  &trans     &trans
+&kp LS(GRAVE)  &kp LS(N1)     &kp LS(N2)  &kp LS(N3)     &kp LS(N4)  &kp LS(N5)                          &kp LS(N6)  &kp LS(N7)  &kp LS(N8)  &kp LS(N9)  &kp LS(N0)  &kp LS(BSLH)
+&kp LS(SQT)    &kp LS(MINUS)  &kp MINUS   &kp LS(EQUAL)  &kp EQUAL   &kp LS(SQT)                         &kp LEFT    &kp DOWN    &kp UP      &kp RIGHT   &kp SQT     &kp BSLH
+&kp GRAVE      &kp N1         &kp N2      &kp N3         &kp N4      &kp N5       &kp K_MUTE  &kp KP_N2  &kp N6      &kp N7      &kp N8      &kp N9      &kp N0      &kp KP_N0
+&trans         &trans         &mo BT      &none          &none       &none                               &kp BSPC    &kp SPACE   &none       &macro_m1   &trans      &trans
             >;
+
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_BRI_UP C_BRI_DN>;
         };
 
         layer3 {
             display-name = "Function";
             bindings = <
-                &trans &trans &trans &trans &trans &trans                                      &kp LS(LEFT) &kp LS(DOWN) &kp LS(UP) &kp LS(RIGHT) &trans &trans
-                &trans &kp F11 &kp F12 &kp F13 &kp F14 &kp F15                         &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_UP &mmv MOVE_RIGHT &trans &trans
-                &trans &kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &kp K_MUTE &kp KP_N3          &kp F6 &kp F7 &kp F8 &kp F9 &kp F10 &trans
-                &trans &trans &mo BT &none &none &none                                    &kp BSPC &mkp MB1 &mkp MB2 &none &none &none
+&trans  &trans   &trans   &trans  &trans        &trans                         &kp LS(LEFT)    &kp LS(DOWN)    &kp LS(UP)    &kp LS(RIGHT)    &trans   &trans
+&trans  &kp F11  &kp F12  &trans  &kp CAPSLOCK  &trans                         &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &trans   &trans
+&trans  &kp F1   &kp F2   &kp F3  &kp F4        &kp F5  &kp K_MUTE  &kp KP_N3  &kp F6          &kp F7          &kp F8        &kp F9           &kp F10  &trans
+&trans  &trans   &mo BT   &none   &none         &none                          &kp BSPC        &mkp MB1        &mkp MB2      &none            &none    &none
             >;
+
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &scroll_y>;
         };
 
         layer4 {
             display-name = "Number";
             bindings = <
-                &none &none &none &none &none &none                                      &kp LS(N2) &kp KP_N7 &kp KP_N8 &kp KP_N9 &none &none
-                &none &kp LS(MINUS) &kp MINUS &kp LS(EQUAL) &kp EQUAL &none               &kp KP_N0 &kp KP_NUMBER_4 &kp KP_NUMBER_5 &kp KP_N6 &kp DOT &none
-                &none &none &none &none &none &none &kp K_MUTE &kp KP_NUMBER_4             &kp LS(MINUS) &kp KP_N1 &kp KP_N2 &kp KP_N3 &none &none
-                &none &none &mo BT &tog NUM &kp SPACE &kp MINUS                             &kp BSPC &kp SPACE &kp EQUAL &none &none &none
+&none  &none          &none      &none          &none      &none                                   &kp LS(N2)     &kp KP_N7        &kp KP_N8        &kp KP_N9  &none    &none
+&none  &kp LS(MINUS)  &kp MINUS  &kp LS(EQUAL)  &kp EQUAL  &none                                   &kp KP_N0      &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_N6  &kp DOT  &none
+&none  &none          &none      &none          &none      &none      &kp K_MUTE  &kp KP_NUMBER_4  &kp LS(MINUS)  &kp KP_N1        &kp KP_N2        &kp KP_N3  &none    &none
+&none  &none          &mo BT     &tog NUM       &kp SPACE  &kp MINUS                               &kp BSPC       &kp SPACE        &kp EQUAL        &none      &none    &none
             >;
+
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &scroll_y>;
         };
 
         layer5 {
             display-name = "Number 5";
             bindings = <
-                &none &none &none &none &none &none                                      &none &none &none &none &none &none
-                &none &none &none &none &none &none                                      &none &none &none &none &none &none
-                &none &none &none &none &none &none &kp K_MUTE &kp KP_N5                   &none &none &none &none &none &none
-                &none &none &mo BT &none &none &none                                      &none &none &none &none &none &none
+&none  &none  &none   &none  &none  &none                         &none  &none  &none  &none  &none  &none
+&none  &none  &none   &none  &none  &none                         &none  &none  &none  &none  &none  &none
+&none  &none  &none   &none  &none  &none  &kp K_MUTE  &kp KP_N5  &none  &none  &none  &none  &none  &none
+&none  &none  &mo BT  &none  &none  &none                         &none  &none  &none  &none  &none  &none
             >;
+
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &scroll_y>;
         };
 
         layer6 {
             display-name = "Number 6";
             bindings = <
-                &none &none &none &none &none &none                                      &none &none &none &none &none &none
-                &none &none &none &none &none &none                                      &none &none &none &none &none &none
-                &none &none &none &none &none &none &kp K_MUTE &kp KP_N6                   &none &none &none &none &none &none
-                &none &none &mo BT &none &none &none                                      &none &none &none &none &none &none
+&none  &none  &none   &none  &none  &none                         &none  &none  &none  &none  &none  &none
+&none  &none  &none   &none  &none  &none                         &none  &none  &none  &none  &none  &none
+&none  &none  &none   &none  &none  &none  &kp K_MUTE  &kp KP_N6  &none  &none  &none  &none  &none  &none
+&none  &none  &mo BT  &none  &none  &none                         &none  &none  &none  &none  &none  &none
             >;
+
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &scroll_y>;
         };
 
         layer7 {
             display-name = "Number 7";
             bindings = <
-                &none &none &none &none &none &none                                      &none &none &none &none &none &none
-                &none &none &none &none &none &none                                      &none &none &none &none &none &none
-                &none &none &none &none &none &none &kp K_MUTE &kp KP_N7                   &none &none &none &none &none &none
-                &none &none &mo BT &none &none &none                                      &none &none &none &none &none &none
+&none  &none  &none   &none  &none  &none                         &none  &none  &none  &none  &none  &none
+&none  &none  &none   &none  &none  &none                         &none  &none  &none  &none  &none  &none
+&none  &none  &none   &none  &none  &none  &kp K_MUTE  &kp KP_N7  &none  &none  &none  &none  &none  &none
+&none  &none  &mo BT  &none  &none  &none                         &none  &none  &none  &none  &none  &none
             >;
+
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &scroll_y>;
         };
 
         layer8 {
             display-name = "Number 8";
             bindings = <
-                &none &none &none &none &none &none                                      &none &none &none &none &none &none
-                &none &none &none &none &none &none                                      &none &none &none &none &none &none
-                &none &none &none &none &none &none &kp K_MUTE &kp KP_N8                   &none &none &none &none &none &none
-                &none &none &mo BT &none &none &none                                      &none &none &none &none &none &none
+&none  &none  &none   &none  &none  &none                         &none  &none  &none  &none  &none  &none
+&none  &none  &none   &none  &none  &none                         &none  &none  &none  &none  &none  &none
+&none  &none  &none   &none  &none  &none  &kp K_MUTE  &kp KP_N8  &none  &none  &none  &none  &none  &none
+&none  &none  &mo BT  &none  &none  &none                         &none  &none  &none  &none  &none  &none
             >;
+
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &scroll_y>;
         };
 
         layer9 {
             display-name = "Bluetooth and Layers";
             bindings = <
-                &none &none &none &none &none &none                                      &none &none &none &none &none &none
-                &bt BT_SEL 2 &none &none &none &none &none                              &to BASE &to NUM &none &none &none &none
-                &bt BT_SEL 1 &none &none &none &none &none &kp K_MUTE &kp KP_N9          &none &to WIN &to SYM &to FN &none &none
-                &bt BT_SEL 0 &none &mo BT &none &none &none                              &none &none &none &none &none &none
+&none         &none  &none   &none  &none  &none                         &none     &none    &none    &none   &none  &none
+&bt BT_SEL 2  &none  &none   &none  &none  &none                         &to BASE  &to NUM  &none    &none   &none  &none
+&bt BT_SEL 1  &none  &none   &none  &none  &none  &kp K_MUTE  &kp KP_N9  &none     &to WIN  &to SYM  &to FN  &none  &none
+&bt BT_SEL 0  &none  &mo BT  &none  &none  &none                         &none     &none    &none    &none   &none  &none
             >;
+
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &scroll_y>;
         };
     };
