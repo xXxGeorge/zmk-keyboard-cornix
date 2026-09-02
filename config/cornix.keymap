@@ -37,8 +37,9 @@
  * same-hand rolls remain taps. */
 
 #define HM_TERM 220
-#define HM_QUICK 175
+#define HM_QUICK 250
 #define HM_IDLE 150
+#define LT_QUICK 175
 
 /* Faster default movement with a shorter acceleration ramp. */
 
@@ -102,7 +103,7 @@
 
             flavor = "hold-preferred";
             tapping-term-ms = <HM_TERM>;
-            quick-tap-ms = <HM_QUICK>;
+            quick-tap-ms = <LT_QUICK>;
         };
 
         /* RMK TD(0): single tap toggles layer 4, hold momentarily activates it. */
